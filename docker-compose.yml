@@ -1,0 +1,45 @@
+version: '3.9'
+services:
+  api-chefeemcasa:
+    build: 
+      context: ./chef_em_casa_back
+      dockerfile: Dockerfile
+    container_name: api-chefeemcasa
+    ports:
+        - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db_chefemcasa:3306/chefeemcasa
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=receita123
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
+    depends_on:
+        - db_chefemcasa
+    volumes:
+         - ./chef_em_casa_back/src:/app/src 
+
+  front-chefeemcasa:
+    build: 
+      context: ./chef-em-casa-front
+      dockerfile: Dockerfile
+    container_name: front-chefeemcasa
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api-chefeemcasa
+    volumes:
+      - ./chef-em-casa-front:/app
+  
+  db_chefemcasa:
+    image: mysql:8.0
+    container_name: db_chefemcasa
+    environment:
+      MYSQL_DATABASE: chefeemcasa
+      MYSQL_ROOT_PASSWORD: receita123
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
