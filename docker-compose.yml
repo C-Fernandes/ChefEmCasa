@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     container_name: api-chefeemcasa
     ports:
-        - "8080:8080"
+      - "8080:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=default
       - SPRING_DATASOURCE_URL=jdbc:mysql://db_chefemcasa:3306/chefeemcasa
@@ -14,9 +14,9 @@ services:
       - SPRING_DATASOURCE_PASSWORD=receita123
       - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
     depends_on:
-        - db_chefemcasa
+      - db_chefemcasa
     volumes:
-         - ./chef_em_casa_back/src:/app/src 
+      - ./chef_em_casa_back/src:/app/src 
 
   front-chefeemcasa:
     build: 
@@ -39,7 +39,9 @@ services:
     ports:
       - "3307:3306"
     volumes:
-      - mysql-data:/var/lib/mysql
+      - ~/mysql:/var/lib/mysql
+    command: 
+      --bind-address=0.0.0.0
 
 volumes:
   mysql-data:
