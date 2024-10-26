@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://db_chefemcasa:3306/chefeemcasa
+    url: jdbc:mysql://db_chefemcasa:3306/chefemcasa
     username: root
     password: receita123
     driver-class-name: com.mysql.cj.jdbc.Driver

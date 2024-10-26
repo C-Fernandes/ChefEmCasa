@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbdcf2a8-21ad-4b08-aa01-5c68d0f15655" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/chef_em_casa_back/src/main/java/com/back/chef_em_casa_back/entity/Avaliation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chef_em_casa_back/src/main/java/com/back/chef_em_casa_back/entity/Ingredient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chef_em_casa_back/src/main/java/com/back/chef_em_casa_back/entity/IngredientRecipe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chef_em_casa_back/src/main/java/com/back/chef_em_casa_back/entity/Recipe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chef_em_casa_back/src/main/java/com/back/chef_em_casa_back/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chef_em_casa_back/src/main/java/com/back/chef_em_casa_back/enums/Measure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chef-em-casa-front/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/chef-em-casa-front/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chef_em_casa_back/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chef_em_casa_back/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +24,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2nw6JjjSAYXbVjhU4ucgenVRj5A" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -30,7 +38,7 @@
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Web1/ChefEmCasa",
+    "last_opened_file_path": "D:/Web1/ChefEmCasa/chef_em_casa_back",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -56,7 +64,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1729871721150</updated>
-      <workItem from="1729871726014" duration="3005000" />
+      <workItem from="1729871726014" duration="3600000" />
+      <workItem from="1729881633535" duration="3064000" />
     </task>
     <servers />
   </component>
