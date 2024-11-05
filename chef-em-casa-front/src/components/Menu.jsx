@@ -9,10 +9,10 @@ function Menu() {
             <h2>ChefEmCasa</h2>
             <div id="nav">
                 <a href="/">Inicio</a>
-                <a href="">Explorar</a>
+                <a href="/explorar">Explorar</a>
                 <a href="">Criar</a>
             </div>
-            <div className="search-input">
+            <div className="input">
                 <img src="./icons/searchIcon.png" alt="Icone de busca"/>
                 <input type="text" placeholder="Pesquise por uma receita"/>
             </div>
