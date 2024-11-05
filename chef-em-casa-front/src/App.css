@@ -1,16 +1,23 @@
-
 :root {
     --turquesa-vivo: #34E0B6; /* Turquesa Vivo */
     --ardosia-escura: #573843; /* Ardósia Escura */
     --laranja-quente: #FFA834; /* Laranja Quente */
     --vermelho-coral: #FF5D5D; /* Vermelho Coral */
---marrom-escuro: #573843;
+    --marrom-escuro: #573843;
+    --marrom-claro: #bab0b4;
+    --branco-floral: #FFFDF1;
+}
+
+* {
+    margin: 0;
 }
 
 html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden; /* Remove o scroll horizontal */
+    background-color: var(--branco-floral);
+    color: var(--marrom-escuro);
 }
 
 a {
@@ -31,46 +38,76 @@ a:visited {
     color: inherit; /* Remove a cor roxa dos links visitados */
 }
 
+.simple-button {
+    background-color: var(--laranja-quente);
+    border: none;
+    border-radius: 20px;
+    height: 30px;
+    padding: 0 10px;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    width: fit-content;
+}
+
+main h1 {
+    margin-bottom: 30px;
+}
+
 .menu {
-color: var(--marrom-escuro);
+    color: var(--marrom-escuro);
     display: flex;
-    flex-direction: row;
     height: 79px;
-   width: 100%;
-    justify-content: flex-start;
-   padding: 15px 136px;
+    padding: 0px 136px;
+    gap: 30px;
     font-family: 'Poppins', sans-serif;
     font-weight: 700; /* Bold */
     font-size: 13px;
     align-items: center;
 }
+
+h1 {
+    font-size: 40px;
+    color: var(--ardosia-escura);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
 .menu h2{  font-size: 24px;
 margin: 0 0 5px 0 ;}
 
 
 #nav {
-    width: 210px;
     font-size: 16px;
-    margin: 30px;
     display: flex;
+    gap: 35px;
+    padding: 0 10px;
     align-items: center;
     flex-direction: row;
-    justify-content: space-between;
     font-weight: 600; /* SemiBold */
 }
 
 
-.search-input {
-font-size: 13px;
+.input {
+    font-size: 13px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    width: 500px;
     height: 30px;
     padding: 0 10px;
     border-radius: 20px;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(87, 56, 67,0.15);
+    flex-grow: 1;
+    color: var(--marrom-escuro);
+    font-weight: 400;
+    border: none;
+}
+.input input {
+    color: var(--marrom-escuro);
+    border: none;
+    background-color: transparent;
 }
 
 .search-input img {
@@ -79,13 +116,6 @@ font-size: 13px;
     margin: 0 10px 0 0;
 }
 
-.search-input input {
-    border: none;
-    background-color: transparent;
-    color: rgba(0, 0, 0, 0.3);
-    font-weight: 400; /* Regular */
-
-}
 input:focus {
     outline: none; /* Remove a borda de destaque */
 }
@@ -98,9 +128,7 @@ input:focus {
     border-radius: 50px;
     font-weight: 400; /* Regular */
     height: 30px;
-    width: 126px;
     justify-content: space-between;
-    margin: 0 0 0 30px;
 }
 .userName span{ display: flex;
     justify-content: center;
@@ -114,6 +142,181 @@ input:focus {
     margin:  0 -0.5px 0 0; }
 
 .userName p{
-    width: 70px;
     padding: 0 10px;
+}
+
+main {
+    padding: 75px 135px;
+}
+
+
+/* ===== CARDS ====== */
+
+.cards-content {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 276px;
+    height: 315px;
+    padding: 10px;
+    border: 1px solid var(--marrom-claro);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-sizing: border-box;
+}
+
+.card .image {
+    width: 100%;
+    min-height: 148px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+}
+
+.card .title {
+    font-size: 16px;
+    color: var(--marrom-escuro);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.card .description {
+    font-size: 14px;
+    color: var(--marrom-claro);
+    font-family: "Manjari", sans-serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    flex-grow: 1;
+    /* height: 60px; */
+}
+
+.card .card-actions {
+    display: flex;
+    justify-content: right;
+    gap: 15px;
+}
+
+
+.card .card-actions button {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-family: "Manjari", sans-serif;
+    color: var(--marrom-escuro);
+}
+
+/* ===== FILTERS ===== */
+
+.flex-row {
+    display: flex;
+    gap: 50px;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    width: 242px;
+    height: fit-content;
+    border: 1px solid var(--marrom-claro);
+    border-radius: 14px;
+    padding: 10px;
+}
+
+.filter > *:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.filter-section > *:not(:last-child){
+    margin-bottom: 7px;
+}
+
+.filter-section:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.input-content {
+    display: flex;
+    gap: 5px;
+}
+
+.input-content button {
+    background-color: #FFA834;
+    padding: 3px;
+    border: none;
+    display: flex;
+    border-radius: 50px;
+}
+
+.options {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.options .option {
+    display: flex;
+    background-color: rgba(52, 224, 181, 0.2);
+    font-weight: 500;
+    color: var(--turquesa-vivo);
+    padding: 3px 5px;
+    border-radius: 7px;
+    box-sizing: border-box;
+    font-size: 12px;
+}
+
+.btn {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+.btn, .btn svg {
+    display: flex;
+}
+
+
+.options .option.marked {
+    background-color: var(--turquesa-vivo);
+    color: white;
+}
+
+.buttons {
+    justify-content: flex-end;
+}
+
+#clear-filter-button {
+    background-color: var(--vermelho-coral);
+}
+
+/* ===== FOOTER ===== */
+
+.page-footer {
+    display: flex;
+    padding: 25px 135px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--marrom-escuro);
+    color: var(--branco-floral);
+}
+
+.page-footer nav ul {
+    display: flex;
+    list-style: none;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    padding: 0;
+    gap: 50px;
 }
