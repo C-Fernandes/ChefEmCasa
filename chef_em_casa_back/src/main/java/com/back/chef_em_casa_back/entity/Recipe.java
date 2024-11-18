@@ -27,16 +27,9 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
     private String name;
-
-    @Column
     private String description;
-
-    @Column
     private int preparationTimeMinutes;
-
-    @Column
     private int performance;
 
     @OneToMany(mappedBy = "recipe")

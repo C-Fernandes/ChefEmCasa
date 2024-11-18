@@ -42,6 +42,7 @@ public class UserController {
             user.setEmail(userDTO.email());
             user.setPassword(userDTO.password());
             user.setName(userDTO.name());
+            user.setBirthDate(userDTO.birthDate());
             User savedUser = userService.save(user);
             return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
         } catch (Exception e) {

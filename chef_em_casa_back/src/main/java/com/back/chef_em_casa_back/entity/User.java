@@ -1,9 +1,9 @@
 package com.back.chef_em_casa_back.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -20,10 +20,11 @@ import lombok.Setter;
 public class User {
     @Id
     private String email;
-    @Column
     private String password;
-    @Column
     private String name;
+
+    private Date birthDate;
+    
 
     @OneToMany(mappedBy = "user")
     private List<Avaliation> avaliations = new ArrayList<>();
