@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "ChefEmCasaBackApplication",
+            "request": "launch",
+            "mainClass": "com.back.chef_em_casa_back.ChefEmCasaBackApplication",
+            "projectName": "chef_em_casa_back"
+        },
+        {
             "type": "node",
             "request": "launch",
             "name": "Launch Program",

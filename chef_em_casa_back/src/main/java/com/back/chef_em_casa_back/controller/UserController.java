@@ -35,7 +35,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/registrar")
+    @PostMapping("/register")
     public ResponseEntity<User> save(@RequestBody UserDTO userDTO) {
         try {
             User user = new User();
