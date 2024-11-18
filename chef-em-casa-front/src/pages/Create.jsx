@@ -1,14 +1,13 @@
 import React from "react";
 import Menu from "../components/Menu";
+import Card from "../components/Card";
+import AsideFilter from "../components/AsideFilter";
 import Footer from "../components/footer";
 
-function Home() {
+function create() {
     return (
         <>
             <Menu />
-            <h1>Hello world!</h1>
-            <Footer />
-        </>
-    );
+        </>);
 }
-export default Home;
+export default create
