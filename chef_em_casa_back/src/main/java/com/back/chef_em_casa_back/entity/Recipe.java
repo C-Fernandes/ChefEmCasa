@@ -3,6 +3,10 @@ package com.back.chef_em_casa_back.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.back.chef_em_casa_back.dto.IngredientRecipeDTO;
+import com.back.chef_em_casa_back.dto.UserDTO;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -41,6 +45,21 @@ public class Recipe {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User author;
+    private User author;    
+    
+    @OneToMany(mappedBy = "recipe_labels", cascade = CascadeType.ALL)
+    private List<RecipeLabel> recipeLabels = new ArrayList<>();
+
+
+    public Recipe( String name, String description, String imageUrlString, int preparationTimeMinutes, int performance, List<IngredientRecipe> ingredientRecipe, User author) {
+    
+        this.name = name;
+        this.description = description;
+        this.imageUrlString = imageUrlString;
+        this.preparationTimeMinutes = preparationTimeMinutes;
+        this.performance = performance;
+        this.ingredientRecipe = ingredientRecipe;
+        this.author = author;
+    }
 
 }
