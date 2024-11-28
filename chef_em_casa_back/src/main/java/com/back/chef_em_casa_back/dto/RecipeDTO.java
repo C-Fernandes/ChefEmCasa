@@ -8,6 +8,6 @@ public record RecipeDTO(
     String description,String imageUrlString, 
     int preparationTimeMinutes,
     int performance,// DTO específico para Avaliation
-    List<String> ingredients,  // DTO específico para IngredientRecipe
-    UserDTO author  // DTO específico para User (Autor da receita)
+    List<IngredientDTO> ingredients,  // DTO específico para IngredientRecipe
+    String author// DTO específico para User (Autor da receita)
 ) {}

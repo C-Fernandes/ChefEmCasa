@@ -126,14 +126,28 @@ h1 {
     border: none;
 }
 
-input {
+input,
+textarea {
     color: var(--marrom-escuro);
     border: none;
     background-color: transparent;
     border-radius: 20px;
+    box-sizing: border-box;
 
 }
 
+textarea {
+    width: 100%;
+    height: auto;
+    resize: vertical;  
+    min-height: 30px;  line-height: 30px; 
+}
+
+select{
+    -webkit-appearance: none;  /* Remove a seta no Chrome/Safari */
+    -moz-appearance: none;     /* Remove a seta no Firefox */
+    appearance: none;              /* Remove a seta no navegador padrão */
+}
 button {
     border-radius: 50px;
     padding: 5px 10px;
@@ -205,6 +219,13 @@ main {
     box-sizing: border-box;
 }
 
+.card-add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: dashed;
+}
+
 .card .image {
     width: 100%;
     min-height: 148px;
@@ -251,6 +272,20 @@ main {
     cursor: pointer;
     font-family: "Manjari", sans-serif;
     color: var(--marrom-escuro);
+}
+
+.add-recipe-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(141, 104, 117, 0.3);
+    color: var(--marrom-escuro);
+    border-radius: 50%;
+    width: 24px;
+    font-size: 13px;
+    height: 24px;
+    padding: 0;
+    border: none;
 }
 
 /* ===== FILTERS ===== */
@@ -398,6 +433,22 @@ main {
 
 }
 
+.modal-recipe {
+    overflow-y: auto;
+    /* Permite a rolagem vertical */
+    width: 750px;
+    height: 85%;
+    scrollbar-width: none;
+    border-radius: 20px;
+    box-sizing: border-box;
+    font-family: "Manjari", sans-serif;
+}
+.modal-recipe textarea, .modal-recipe input , .modal-recipe select{
+    
+    font-family: "Manjari", sans-serif;color: var(--marrom-escuro);
+}
+
+
 /* Animação suave para o conteúdo do modal */
 @keyframes modalContentIn {
     0% {
@@ -464,9 +515,141 @@ main {
     background-color: var(--amarelo-dourado);
     color: white;
 }
-.modal-content form label{
+
+.modal-content form label {
     font-size: 16px;
 }
+
 .modal-content a {
     color: var(--amarelo-dourado);
+}
+.modal-recipe label{
+    margin: 0 0 2px 0;
+    font-size: 16px;
+    font-weight: normal; font-family: "Poppins", sans-serif;
+}
+.modal-recipe .categories {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    padding: 0 5px;
+    margin: 5px;
+    justify-content: flex-start !important;
+
+
+
+}
+
+.modal-recipe .categories button {
+    width: auto !important;
+    margin: 5px !important;
+    padding: 8px;
+    height: auto;
+    border-radius: 10px;
+    white-space: nowrap;
+    display: inline-block;
+    background-color: rgba(255, 168, 52, 0.3) !important;
+    color: var(--amarelo-dourado) !important;
+    transition: background-color 0.6s ease-in-out, color 0.6s ease-in-out;
+}
+
+.modal-recipe .categories button:hover {
+    background-color: var(--amarelo-dourado) !important;
+    color: white !important;
+}
+
+.modal-recipe .description {
+    width: 100%;
+    box-sizing: border-box;
+}
+.ingredients .ingredients-labels{
+    display: flex;
+   
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    
+}
+
+.ingredients .ingredients-labels button{
+    margin: 0 0 0 5px!important;
+}
+.modal-recipe .ingredients input , .modal-recipe .ingredients select{
+    width: auto !important;
+    margin: 0 5px 0 0;
+    
+}
+.upload-container {
+    position: relative;
+    width: auto !important;
+    max-width: 600px;
+    margin: 0 auto;
+}
+ .fi{
+    width: 24px;
+    height: 24px;
+font-size: 24px;
+color: black;
+}
+
+.file-input {
+    display: none;
+    /* Oculta o input de arquivo real */
+}
+
+.upload-label {
+    display: block;
+    border: 2px dashed #8a7d8b;
+    /* Cor do contorno */
+    border-radius: 12px;
+    /* Bordas arredondadas */
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    width: 366px;
+    height: 136px;
+    background-color: #f9f1f2;
+    /* Cor de fundo */
+    color: #8a7d8b;
+    /* Cor do texto */
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload-label:hover {
+    background-color: #eae0e4;
+    /* Cor de fundo ao passar o mouse */
+}
+
+.upload-icon {
+    display: block;
+    font-size: 36px;
+    /* Tamanho do ícone */
+    margin-bottom: 10px;
+}
+
+.upload-label p {
+    margin: 0;
+}
+
+.buttons-recipe-modal{
+    display: flex
+    ;
+        flex-direction: row !important;
+        justify-content: flex-end;
+}
+.buttons-recipe-modal button{
+    width: fit-content !important;
+margin-left: 10px !important;
+font-size: 13px;
+font-weight: bold;
+}
+.buttons-recipe-modal button:first-child{
+background-color: var(--turquesa-vivo);
+}
+.buttons-recipe-modal button:last-child{
+    background-color: var(--vermelho-coral);
 }
