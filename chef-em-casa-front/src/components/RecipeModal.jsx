@@ -107,7 +107,7 @@ function RecipeModal({ onClose }) {
   return (
     <div className={`modal-overlay ${isVisible ? 'visible' : ''}`} onClick={onClose}>
       <div className="modal-content modal-recipe" onClick={(e) => e.stopPropagation()}>
-
+<h2>Crie uma nova receita!</h2>
         <form onSubmit={handleSubmit}>
           <div className="upload-container">
             <input type="file" id="fileInput" className="file-input" accept="image/*" />
@@ -147,7 +147,7 @@ function RecipeModal({ onClose }) {
               <input
                 className="input"
                 type="text"
-                placeholder="Qtd."
+                placeholder="Quantidade"
                 value={newIngredient.quantity}
                 onChange={(e) => setNewIngredient({ ...newIngredient, quantity: e.target.value })}
               />
@@ -175,7 +175,7 @@ function RecipeModal({ onClose }) {
                 +
               </button>
             </div>
-            <ul>
+            <ul className='selected-ingredients'>
               {formValues.ingredients.map((ingredient, index) => (
                 <li key={index}>
                   {ingredient.quantity} {ingredient.unit} {ingredient.name}

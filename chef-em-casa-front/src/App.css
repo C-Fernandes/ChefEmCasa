@@ -139,15 +139,20 @@ textarea {
 textarea {
     width: 100%;
     height: auto;
-    resize: vertical;  
-    min-height: 30px;  line-height: 30px; 
+    resize: vertical;
+    min-height: 30px;
+    line-height: 30px;
 }
 
-select{
-    -webkit-appearance: none;  /* Remove a seta no Chrome/Safari */
-    -moz-appearance: none;     /* Remove a seta no Firefox */
-    appearance: none;              /* Remove a seta no navegador padrão */
+select {
+    -webkit-appearance: none;
+    /* Remove a seta no Chrome/Safari */
+    -moz-appearance: none;
+    /* Remove a seta no Firefox */
+    appearance: none;
+    /* Remove a seta no navegador padrão */
 }
+
 button {
     border-radius: 50px;
     padding: 5px 10px;
@@ -195,7 +200,7 @@ input:focus {
 }
 
 main {
-    padding: 75px 135px;
+    padding: 4.6rem 80px;
 }
 
 
@@ -217,13 +222,20 @@ main {
     flex-direction: column;
     gap: 10px;
     box-sizing: border-box;
+    transition: box-shadow 0.6s ease-in-out;
 }
 
+.card:hover{
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
 .card-add {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-style: dashed;
+    border-style: dashed;  transition: background-color 1s ease; 
+}
+.card-add:hover{
+    background-color: #5738430c;
 }
 
 .card .image {
@@ -285,8 +297,13 @@ main {
     font-size: 13px;
     height: 24px;
     padding: 0;
-    border: none;
+    border: none;transition: transform 0.6s ease , font-size 0.5s ease;
 }
+.card-add:hover .add-recipe-circle{
+    transform: scale(1.4);  
+    font-size: 18px;
+}
+
 
 /* ===== FILTERS ===== */
 
@@ -295,6 +312,12 @@ main {
     gap: 50px;
 }
 
+.flex-column{
+    display: flex
+    ;
+       
+        flex-direction: column;
+}
 .filter {
     display: flex;
     flex-direction: column;
@@ -442,12 +465,18 @@ main {
     border-radius: 20px;
     box-sizing: border-box;
     font-family: "Manjari", sans-serif;
-}
-.modal-recipe textarea, .modal-recipe input , .modal-recipe select{
-    
-    font-family: "Manjari", sans-serif;color: var(--marrom-escuro);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
+.modal-recipe textarea,
+.modal-recipe input,
+.modal-recipe select {
+
+    font-family: "Manjari", sans-serif;
+    color: var(--marrom-escuro);
+}
 
 /* Animação suave para o conteúdo do modal */
 @keyframes modalContentIn {
@@ -523,11 +552,14 @@ main {
 .modal-content a {
     color: var(--amarelo-dourado);
 }
-.modal-recipe label{
+
+.modal-recipe label {
     margin: 0 0 2px 0;
     font-size: 16px;
-    font-weight: normal; font-family: "Poppins", sans-serif;
+    font-weight: normal;
+    font-family: "Poppins", sans-serif;
 }
+
 .modal-recipe .categories {
     display: flex !important;
     flex-direction: row !important;
@@ -562,34 +594,46 @@ main {
     width: 100%;
     box-sizing: border-box;
 }
-.ingredients .ingredients-labels{
+
+.ingredients .ingredients-labels {
     display: flex;
-   
+
     flex-direction: row;
     align-content: center;
     align-items: center;
-    
+
 }
 
-.ingredients .ingredients-labels button{
-    margin: 0 0 0 5px!important;
+.ingredients .ingredients-labels button {
+    margin: 0 0 0 5px !important;
 }
-.modal-recipe .ingredients input , .modal-recipe .ingredients select{
+
+.modal-recipe .ingredients input,
+.modal-recipe .ingredients select {
     width: auto !important;
     margin: 0 5px 0 0;
-    
+
 }
+
+.modal-recipe .ingredients button {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    padding: 5px;
+}
+
 .upload-container {
     position: relative;
     width: auto !important;
     max-width: 600px;
     margin: 0 auto;
 }
- .fi{
+
+.fi {
     width: 24px;
     height: 24px;
-font-size: 24px;
-color: black;
+    font-size: 24px;
+    color: black;
 }
 
 .file-input {
@@ -635,21 +679,28 @@ color: black;
     margin: 0;
 }
 
-.buttons-recipe-modal{
-    display: flex
-    ;
-        flex-direction: row !important;
-        justify-content: flex-end;
+.buttons-recipe-modal {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: flex-end;
 }
-.buttons-recipe-modal button{
+
+.buttons-recipe-modal button {
     width: fit-content !important;
-margin-left: 10px !important;
-font-size: 13px;
-font-weight: bold;
+    margin-left: 10px !important;
+    font-size: 13px;
+    font-weight: bold;
 }
-.buttons-recipe-modal button:first-child{
-background-color: var(--turquesa-vivo);
+
+.buttons-recipe-modal button:first-child {
+    background-color: var(--turquesa-vivo);
 }
-.buttons-recipe-modal button:last-child{
+
+.buttons-recipe-modal button:last-child {
     background-color: var(--vermelho-coral);
 }
+
+.selected-ingredients {
+    margin: 5px 0;
+}
+
