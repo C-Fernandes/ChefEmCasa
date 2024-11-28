@@ -32,6 +32,6 @@ public class Ingredient {
     private String description;
 
     @OneToMany(mappedBy = "ingredient")
-    private List<IngredientRecipe> IngredientRecipe = new ArrayList<>();
-
+    private List<IngredientRecipe> IngredientRecipe = new ArrayList<>();   
+  
 }

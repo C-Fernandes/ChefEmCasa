@@ -36,9 +36,8 @@ function LoginModal({ onClose, openRegisterModal }) {
 
   return (
     <div className={`modal-overlay ${isVisible ? 'visible' : ''}`} onClick={onClose}>
-      <div className="modal-content" onClick={(e) => { e.stopPropagation(); }}>
-        <div className="circle"></div>
-        <span onClick={onClose}>&times;</span>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()} >
+        <div className="circle"></div> <span onClick={onClose}>&times;</span>
         <h2>Login</h2>
         <form onSubmit={handleLogin}>
           <div>

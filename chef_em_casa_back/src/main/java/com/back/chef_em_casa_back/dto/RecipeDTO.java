@@ -5,10 +5,9 @@ import java.util.List;
 public record RecipeDTO(
     Long id,
     String name,
-    String description,
+    String description,String imageUrlString, 
     int preparationTimeMinutes,
-    int performance,
-    List<AvaliationDTO> avaliacoes,  // DTO específico para Avaliation
-    List<IngredientRecipeDTO> ingredientRecipe,  // DTO específico para IngredientRecipe
-    UserDTO author  // DTO específico para User (Autor da receita)
+    int performance,// DTO específico para Avaliation
+    List<IngredientDTO> ingredients,  // DTO específico para IngredientRecipe
+    String author// DTO específico para User (Autor da receita)
 ) {}

@@ -7,8 +7,8 @@ function Home() {
         <>
             <Menu />
             <h1>Hello world!</h1>
-            <Footer/>
-       </>
+            <Footer />
+        </>
     );
 }
 export default Home;

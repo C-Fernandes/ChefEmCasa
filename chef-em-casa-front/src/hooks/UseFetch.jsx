@@ -1,45 +1,39 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from "react";
 
-const useFetch = (endpoint, method = 'GET', body = null) => {
+const useFetch = (url) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false); // Adicionando o estado de loading
-
-  const fetchData = async () => {
-    setLoading(true); // Inicia o estado de loading
-    setError(null); // Reseta erros antes da nova requisição
-    try {
-      let response;
-      const url = 'http://localhost:8080/' + endpoint;
-
-      switch (method) {
-        case 'POST':
-          response = await axios.post(url, body);
-          break;
-        case 'PUT':
-          response = await axios.put(url, body);
-          break;
-        case 'PATCH':
-          response = await axios.patch(url, body);
-          break;
-        default:
-          response = await axios.get(url);
-          break;
-      }
-      setData(response.data);
-    } catch (err) {
-      setError(err);
-    } finally {
-      setLoading(false); // Finaliza o estado de loading
-    }
-  };
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetchData();
-  }, [endpoint, method, body]);
+    if (!url) return; // Evita execução se a URL não estiver definida
 
-  return { data, error, loading }; // Retorna também o estado de loading
+    const fullUrl = `http://localhost:8080/${url}`; 
+
+
+    const fetchData = async () => {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const response = await fetch(fullUrl);
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        }
+
+        const result = await response.json();
+        setData(result);
+      } catch (err) {
+        setError(err.message || "An error occurred");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [url]); // As dependências garantem que useEffect só seja chamado quando a URL ou opções mudarem
+
+  return { data, error, loading };
 };
 
 export default useFetch;

@@ -4,11 +4,11 @@ import RegisterModal from "./RegisterModal";
 
 function Menu() {
     // Estado que controla qual modal está aberto (login ou registro)
-    const [activeModal, setActiveModal] = useState(null); 
+    const [activeModal, setActiveModal] = useState(null);
 
     const openLoginModal = (e) => {
-        e.preventDefault();  
-        setActiveModal("login"); 
+        e.preventDefault();
+        setActiveModal("login");
     };
 
     // Função para abrir o modal de registro
@@ -27,7 +27,7 @@ function Menu() {
             <div id="nav">
                 <a href="/">Inicio</a>
                 <a href="/explorar">Explorar</a>
-                <a href="">Criar</a>
+                <a href="/criar">Criar</a>
             </div>
             <div className="input">
                 <img src="./icons/searchIcon.png" alt="Icone de busca" />
@@ -39,15 +39,15 @@ function Menu() {
 
                 {/* Renderiza o modal de login ou registro dependendo do estado */}
                 {activeModal === "login" && (
-                    <LoginModal 
-                        onClose={closeModal} 
-                        openRegisterModal={openRegisterModal} 
+                    <LoginModal
+                        onClose={closeModal}
+                        openRegisterModal={openRegisterModal}
                     />
                 )}
                 {activeModal === "register" && (
-                    <RegisterModal 
-                        onClose={closeModal} 
-                        openLoginModal={openLoginModal} 
+                    <RegisterModal
+                        onClose={closeModal}
+                        openLoginModal={openLoginModal}
                     />
                 )}
             </div>
