@@ -19,7 +19,7 @@ import com.back.chef_em_casa_back.entity.User;
 import com.back.chef_em_casa_back.service.UserService;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("public/user")
 public class UserController {
 
     @Autowired
