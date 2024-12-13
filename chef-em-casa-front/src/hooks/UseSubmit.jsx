@@ -1,6 +1,10 @@
-import { useState } from 'react';
-
-const useSubmit = (url, method = 'POST') => {
+import { useState } from "react";
+const useSubmit = (
+  url,
+  method = "POST",
+  dataName,
+  contentType = "application/json"
+) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
@@ -11,13 +15,35 @@ const useSubmit = (url, method = 'POST') => {
 
     const fullUrl = `http://localhost:8080/${url}`; // A URL completa
 
+    const formData = new FormData();
+
+    // Adicionar os dados do formulário ao FormData
+    // Usamos o dataName para definir o nome da parte do FormData
+    formData.append(dataName, JSON.stringify(payload)); // Aqui, enviamos o JSON como uma string
+
+    // Adicionar a imagem (caso exista) ao FormData
+    if (payload.image) {
+      formData.append("image", payload.image);
+    }
+
+    // Adicionar os outros campos de dados ao FormData
+    Object.keys(payload).forEach((key) => {
+      if (Array.isArray(payload[key])) {
+        payload[key].forEach((item, index) => {
+          Object.keys(item).forEach((subKey) => {
+            formData.append(`${key}[${index}].${subKey}`, item[subKey]);
+          });
+        });
+      } else {
+        formData.append(key, payload[key]);
+      }
+    });
+
     try {
       const response = await fetch(fullUrl, {
         method,
-        headers: {
-          'Content-Type': 'application/json', // Garantir que o conteúdo é JSON
-        },
-        body: JSON.stringify(payload), // Transformar o corpo para JSON
+        body: formData,
+        headers: { "Content-Type": contentType },
       });
 
       if (!response.ok) {

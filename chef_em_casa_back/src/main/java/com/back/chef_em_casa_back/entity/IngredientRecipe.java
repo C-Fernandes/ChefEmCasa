@@ -1,6 +1,5 @@
 package com.back.chef_em_casa_back.entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,4 +31,19 @@ public class IngredientRecipe {
     @ManyToOne
     @JoinColumn(name = "recipe_id")
     private Recipe recipe;
+
+    public IngredientRecipe(Double quantity, String unit) {
+
+        this.quantity = quantity;
+        this.unit = unit;
+    }
+
+    public IngredientRecipe(double quantity, String unit, Ingredient ingredient, Recipe recipe) {
+
+        this.quantity = quantity;
+        this.unit = unit;
+        this.ingredient = ingredient;
+        this.recipe = recipe;
+    }
+
 }

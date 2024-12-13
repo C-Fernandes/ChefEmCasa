@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,7 +31,7 @@ public class Recipe {
     private String description;
     private String imageUrlString;
     private int preparationTimeMinutes;
-    private int performance;
+    private String preparation;
 
     @OneToMany(mappedBy = "recipe")
     private List<IngredientRecipe> ingredientRecipe = new ArrayList<>();
@@ -42,18 +41,16 @@ public class Recipe {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User author;    
-    
+    private User author;
+
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
     private List<RecipeLabel> recipeLabels = new ArrayList<>();
 
-
-    public Recipe( String name, String description, String imageUrlString, int preparationTimeMinutes, int performance) {
+    public Recipe(String name, String description, int preparationTimeMinutes, String preparation) {
         this.name = name;
         this.description = description;
-        this.imageUrlString = imageUrlString;
         this.preparationTimeMinutes = preparationTimeMinutes;
-        this.performance = performance;
+        this.preparation = preparation;
     }
 
 }

@@ -13,7 +13,7 @@ import com.back.chef_em_casa_back.entity.User;
 import com.back.chef_em_casa_back.repository.UserRepository;
 
 @Service
-public class UserService  implements UserDetailsService {
+public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
@@ -26,15 +26,14 @@ public class UserService  implements UserDetailsService {
         return userRepository.save(user);
     }
 
-
-    public Optional<User> findById(String email){
+    public Optional<User> findById(String email) {
         return userRepository.findById(email);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // Aqui buscamos o usuário no banco de dados usando o email (username)
-        User user = userRepository.findByEmail(username)
+        User user = ((Optional<User>) userRepository.findByEmail(username))
                 .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
 
         // Criamos um objeto UserDetails com a classe User do Spring Security
@@ -44,6 +43,5 @@ public class UserService  implements UserDetailsService {
                 .roles("USER") // Atribui o papel "USER", já que todos são usuários comuns
                 .build();
     }
-
 
 }
