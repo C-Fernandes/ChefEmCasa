@@ -225,16 +225,19 @@ main {
     transition: box-shadow 0.6s ease-in-out;
 }
 
-.card:hover{
+.card:hover {
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
 }
+
 .card-add {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-style: dashed;  transition: background-color 1s ease; 
+    border-style: dashed;
+    transition: background-color 1s ease;
 }
-.card-add:hover{
+
+.card-add:hover {
     background-color: #5738430c;
 }
 
@@ -297,10 +300,12 @@ main {
     font-size: 13px;
     height: 24px;
     padding: 0;
-    border: none;transition: transform 0.6s ease , font-size 0.5s ease;
+    border: none;
+    transition: transform 0.6s ease, font-size 0.5s ease;
 }
-.card-add:hover .add-recipe-circle{
-    transform: scale(1.4);  
+
+.card-add:hover .add-recipe-circle {
+    transform: scale(1.4);
     font-size: 18px;
 }
 
@@ -312,12 +317,12 @@ main {
     gap: 50px;
 }
 
-.flex-column{
-    display: flex
-    ;
-       
-        flex-direction: column;
+.flex-column {
+    display: flex;
+
+    flex-direction: column;
 }
+
 .filter {
     display: flex;
     flex-direction: column;
@@ -704,3 +709,81 @@ main {
     margin: 5px 0;
 }
 
+.titulo-teste {
+    color: blue;
+    ;
+}
+
+.container {
+    font-family: 'Arial', sans-serif;
+
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.informacoes {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 10px;
+}
+
+.div-btn-voltar {
+    width: 10%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-voltar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    border: solid 1px #FFA834;
+    background-color: #FFA834;
+}
+
+.imagem-informacoes {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.star {
+    margin-left: 6px;
+    width: 16px;
+}
+
+.clock {
+    margin-left: 36px;
+    margin-right: 6px;
+    width: 16px;
+}
+
+.autoria-receita {
+    display: flex;
+    /* Ativa o flexbox */
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+    gap: 8px;
+    /* Espaçamento entre os itens (texto, círculo, e bold) */
+    font-size: 16px;
+    /* Ajuste do tamanho da fonte */
+}
+
+.circulo {
+    width: 50px;
+    height: 50px;
+    background-color: #573843;
+    border-radius: 50%;
+}
