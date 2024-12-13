@@ -85,11 +85,33 @@ main h1 {
     align-items: center;
 }
 
-h1 {
-    font-size: 40px;
+h1, h2, h3{
     color: var(--ardosia-escura);
     font-family: 'Poppins', sans-serif;
-    font-weight: var(--semibold);
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+h4 {
+    font-size: 16px;
+    color: var(--ardosia-escura);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+button, .btn {
+    cursor: pointer;
 }
 
 .menu h2 {
@@ -331,6 +353,8 @@ main {
     border: 1px solid var(--marrom-claro);
     border-radius: 14px;
     padding: 10px;
+    position: sticky;
+    top: 30px;
 }
 
 .filter>*:not(:last-child) {
@@ -356,6 +380,7 @@ main {
     border: none;
     display: flex;
     border-radius: 50px;
+    height: 30px;
 }
 
 .options {
@@ -366,6 +391,7 @@ main {
 
 .options .option {
     display: flex;
+    align-items: center;
     background-color: rgba(52, 224, 181, 0.2);
     font-weight: var(--medio);
     color: var(--turquesa-vivo);
@@ -373,6 +399,11 @@ main {
     border-radius: 7px;
     box-sizing: border-box;
     font-size: 12px;
+    font-weight: var(--bold);
+    gap: 5px;
+    font-family: "Manjari", sans-serif;
+    border: none;
+    height: min-content;
 }
 
 .btn {
@@ -398,6 +429,10 @@ main {
 
 #clear-filter-button {
     background-color: var(--vermelho-coral);
+}
+
+#filter-button {
+    flex: 1;
 }
 
 /* ===== FOOTER ===== */
