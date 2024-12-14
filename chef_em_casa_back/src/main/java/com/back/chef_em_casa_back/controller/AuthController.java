@@ -1,5 +1,6 @@
 package com.back.chef_em_casa_back.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -8,7 +9,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.back.chef_em_casa_back.dto.AuthRequestDTO;
 import com.back.chef_em_casa_back.dto.AuthResponseDTO;
+import com.back.chef_em_casa_back.dto.UserDTO;
+import com.back.chef_em_casa_back.entity.User;
+import com.back.chef_em_casa_back.service.UserService;
 import com.back.chef_em_casa_back.utils.JwtUtil;
 
 @RestController
@@ -26,12 +29,16 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtTokenUtil;
     private final UserDetailsService userDetailsService;
+    @Autowired
+    private PasswordEncoder passwordEncoder; // Injeção do PasswordEncoder
+    private UserService userService;
 
     public AuthController(AuthenticationManager authenticationManager, JwtUtil jwtTokenUtil,
-            UserDetailsService userDetailsService) {
+            UserDetailsService userDetailsService, UserService userService) {
         this.authenticationManager = authenticationManager;
         this.jwtTokenUtil = jwtTokenUtil;
         this.userDetailsService = userDetailsService;
+        this.userService = userService;
     }
 
     @PostMapping("/login")
@@ -51,15 +58,33 @@ public class AuthController {
             // Retorna o token
             return ResponseEntity.ok(new AuthResponseDTO(token));
         } catch (UsernameNotFoundException e) {
-    System.err.println("Erro: Usuário não encontrado");
-    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário não encontrado");
-} catch (BadCredentialsException e) {
-    System.err.println("Erro: Credenciais inválidas");
-    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais inválidas");
-} catch (Exception e) {
-    System.err.println("Erro desconhecido: " + e.getMessage());
-    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro no servidor");
-}
+            System.err.println("Erro: Usuário não encontrado");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário não encontrado");
+        } catch (BadCredentialsException e) {
+            System.err.println("Erro: Credenciais inválidas");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais inválidas");
+        } catch (Exception e) {
+            System.err.println("Erro desconhecido: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro no servidor");
+        }
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<User> save(@RequestBody UserDTO userDTO) {
+        try {
+            User user = new User();
+            user.setEmail(userDTO.email());
+
+            // Encriptando a senha antes de salvar
+            user.setPassword(passwordEncoder.encode(userDTO.password()));
+
+            user.setName(userDTO.name());
+            user.setBirthDate(userDTO.birthDate());
+            User savedUser = userService.save(user);
+            return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null); // ou e.getMessage()
+        }
     }
 
 }

@@ -19,10 +19,12 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtRequestFilter jwtRequestFilter)
             throws Exception {
         http.csrf().disable()
-                .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll())
+                .authorizeRequests()
+                .requestMatchers("/auth/**").permitAll() // Permite acesso a /auth (login, register)
+                .requestMatchers("/my-recipes", "/recipe").authenticated() // Protege /my-recipes e /recipe
+                .anyRequest().authenticated() // Qualquer outra rota também exige autenticação
+                .and()
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-
         return http.build();
     }
 
