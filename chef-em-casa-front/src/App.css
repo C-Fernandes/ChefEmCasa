@@ -114,6 +114,11 @@ button, .btn {
     cursor: pointer;
 }
 
+button.desabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
 .menu h2 {
     font-size: 24px;
     margin: 0 0 5px 0;
@@ -383,13 +388,10 @@ main {
 }
 
 .options .option {
-    display: flex;
-    align-items: center;
     background-color: rgba(52, 224, 181, 0.2);
-    font-weight: var(--medio);
     color: var(--turquesa-vivo);
-    padding: 3px 5px;
     border-radius: 7px;
+    padding: 3px 5px;
     box-sizing: border-box;
     font-size: 12px;
     font-weight: var(--bold);
@@ -426,6 +428,38 @@ main {
 
 #filter-button {
     flex: 1;
+}
+
+/* PAGINATION */
+
+.pagination {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    padding: 0px;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: var(--amarelo-dourado);
+}
+
+.pagination span {
+    background-color: var(--vermelho-coral);
+    color: white;
+    font-family: "Poppins", sans-serif;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    min-width: 50px;
 }
 
 /* ===== FOOTER ===== */

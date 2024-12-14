@@ -3,6 +3,7 @@ import Menu from "../components/Menu";
 import Card from "../components/Card";
 import AsideFilter from "../components/AsideFilter";
 import Footer from "../components/footer";
+import Pagination from "../components/Pagination"
 
 function Explore() {
     return (
@@ -49,6 +50,8 @@ function Explore() {
                             src_image="https://cdn.pixabay.com/photo/2020/02/29/15/20/cake-4890393_1280.jpg"
                         />
                     </div>
+
+                    <Pagination totalPages={3} currentPage={1} />
                 </div>
             </main>
             <Footer/>
