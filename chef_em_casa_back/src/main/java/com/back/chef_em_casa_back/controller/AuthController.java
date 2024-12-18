@@ -1,5 +1,8 @@
 package com.back.chef_em_casa_back.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.back.chef_em_casa_back.dto.AuthRequestDTO;
-import com.back.chef_em_casa_back.dto.AuthResponseDTO;
 import com.back.chef_em_casa_back.dto.UserDTO;
 import com.back.chef_em_casa_back.entity.User;
 import com.back.chef_em_casa_back.service.UserService;
@@ -55,8 +57,12 @@ public class AuthController {
             final String token = jwtTokenUtil.generateToken(userDetails);
             System.out.println("Token gerado: " + token);
 
-            // Retorna o token
-            return ResponseEntity.ok(new AuthResponseDTO(token));
+            // Retorna o token e o e-mail do usuário
+            Map<String, Object> response = new HashMap<>();
+            response.put("token", token);
+            response.put("email", authRequest.email());
+
+            return ResponseEntity.ok(response);
         } catch (UsernameNotFoundException e) {
             System.err.println("Erro: Usuário não encontrado");
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário não encontrado");
@@ -75,7 +81,6 @@ public class AuthController {
             User user = new User();
             user.setEmail(userDTO.email());
 
-            // Encriptando a senha antes de salvar
             user.setPassword(passwordEncoder.encode(userDTO.password()));
 
             user.setName(userDTO.name());

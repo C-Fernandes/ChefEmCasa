@@ -24,7 +24,6 @@ function LoginModal({ onClose, openRegisterModal }) {
 
       if (response.ok) {
         const data = await response.json();
-        alert(data.message || "Login bem-sucedido");
         localStorage.setItem("authToken", data.token);
         localStorage.setItem("userEmail", data.email);
         setAuthToken();

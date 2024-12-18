@@ -1,24 +1,31 @@
-import React, { useState, useEffect } from "react";
-import useForm from "../hooks/UseForm";
-import useSubmit from "../hooks/UseSubmit"; // Supondo que useSubmit seja seu hook de envio
+import { useState, useEffect } from "react";
 
 function RegisterModal({ onClose, openLoginModal }) {
-  const [formValues, handleChange, reset] = useForm({
+  const [formValues, setFormValues] = useState({
     name: "",
     email: "",
     birthDate: "",
     password: "",
   });
-  const apiUrl = "auth/register";
+  const apiUrl = "http://localhost:8080/auth/register";
   const [isVisible, setIsVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
-  const { data, loading, error, submit } = useSubmit(apiUrl);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (
@@ -30,21 +37,42 @@ function RegisterModal({ onClose, openLoginModal }) {
       alert("Por favor, preencha todos os campos.");
       return;
     }
-    console.log("Dados enviados:", formValues);
 
-    submit(formValues); // Passa os dados (formValues) para a função submit
-  };
+    setLoading(true);
+    setError(null);
 
-  // Fechar o modal após 3 segundos se o cadastro for bem-sucedido
-  useEffect(() => {
-    if (data) {
-      // Verifica se o cadastro foi bem-sucedido
-      const timer = setTimeout(() => {
-        onClose(); // Fecha o modal
-      }, 3000); // Espera 3 segundos
-      return () => clearTimeout(timer); // Limpa o timer caso o componente seja desmontado
+    try {
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formValues),
+      });
+
+      if (!response.ok) {
+        throw new Error("Erro ao cadastrar. Tente novamente mais tarde.");
+      }
+
+      const data = await response.json();
+      setSuccess(true);
+      setFormValues({
+        name: "",
+        email: "",
+        birthDate: "",
+        password: "",
+      }); // Reseta os campos do formulário
+
+      // Fecha o modal após 3 segundos
+      setTimeout(() => {
+        onClose();
+      }, 3000);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
     }
-  }, [data, onClose]); // O efeito depende do `data` e do `onClose`
+  };
 
   return (
     <div
@@ -116,7 +144,7 @@ function RegisterModal({ onClose, openLoginModal }) {
           </button>
         </form>
         {error && <p className="error">Erro: {error.message}</p>}
-        {data && <p className="success">Cadastro realizado com sucesso!</p>}
+        {success && <p className="success">Cadastro realizado com sucesso!</p>}
         <p>
           Já possui conta?
           <a href="" onClick={openLoginModal}>
