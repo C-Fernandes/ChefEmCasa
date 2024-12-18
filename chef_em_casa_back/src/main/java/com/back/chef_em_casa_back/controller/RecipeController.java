@@ -42,17 +42,14 @@ public class RecipeController {
     @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Optional<Recipe>> save(@RequestBody RecipeDTO recipeDTO) {
         try {
-            // Decodifique a imagem Base64 se necessário
             byte[] imageBytes = null;
             if (recipeDTO.image() != null) {
                 imageBytes = Base64.getDecoder().decode(recipeDTO.image().split(",")[1]);
             }
 
-            // Transformar RecipeDTO em Recipe
             Recipe recipe = new Recipe(recipeDTO.name(), recipeDTO.description(),
                     recipeDTO.preparationTimeMinutes(), recipeDTO.performance());
 
-            // Salvar receita
             Recipe savedRecipe = recipeService.save(recipe, recipeDTO.author(),
                     recipeDTO.ingredients(), imageBytes);
 

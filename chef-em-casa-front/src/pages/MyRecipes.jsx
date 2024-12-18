@@ -22,9 +22,6 @@ function MyRecipes() {
       <main className="flex-column">
         <h1>Suas receitas</h1>
         <div className="cards-content">
-          {loadingFetch && <p>Carregando suas receitas...</p>}
-
-          {errorFetch && <p>Erro ao carregar receitas: {errorFetch}</p>}
           {dataFetch && dataFetch.length > 0 ? (
             dataFetch.map((recipe) => (
               <Card
@@ -37,7 +34,7 @@ function MyRecipes() {
               />
             ))
           ) : (
-            <p>Nenhuma receita encontrada.</p>
+            <p></p>
           )}
 
           <div className="card card-add" onClick={openModal}>

@@ -9,7 +9,7 @@ function RegisterModal({ onClose, openLoginModal }) {
     birthDate: "",
     password: "",
   });
-  const apiUrl = "user/register";
+  const apiUrl = "auth/register";
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -30,6 +30,7 @@ function RegisterModal({ onClose, openLoginModal }) {
       alert("Por favor, preencha todos os campos.");
       return;
     }
+    console.log("Dados enviados:", formValues);
 
     submit(formValues); // Passa os dados (formValues) para a função submit
   };
@@ -117,7 +118,7 @@ function RegisterModal({ onClose, openLoginModal }) {
         {error && <p className="error">Erro: {error.message}</p>}
         {data && <p className="success">Cadastro realizado com sucesso!</p>}
         <p>
-          Já possui conta?{" "}
+          Já possui conta?
           <a href="" onClick={openLoginModal}>
             Faça login
           </a>
