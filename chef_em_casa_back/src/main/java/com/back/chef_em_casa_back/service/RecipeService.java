@@ -3,6 +3,7 @@ package com.back.chef_em_casa_back.service;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +20,8 @@ import io.jsonwebtoken.io.IOException;
 
 @Service
 public class RecipeService {
-    private String uploadDir;
+
+    private final String uploadDir = "uploads";
     @Autowired
     private RecipeRepository recipeRepository;
 
@@ -69,19 +71,25 @@ public class RecipeService {
     }
 
     private String saveImage(byte[] imageBytes) throws IOException, java.io.IOException {
-        // Cria um nome único para o arquivo (exemplo: timestamp + nome original)
-        String filename = System.currentTimeMillis() + ".png"; // ou ".jpg" se for uma imagem JPEG
+        String filename = System.currentTimeMillis() + ".png";
         Path filePath = Paths.get(uploadDir, filename);
-
-        // Salva o arquivo no diretório configurado
+        Files.createDirectories(filePath.getParent());
+        Files.createDirectories(Paths.get(uploadDir));
         Files.write(filePath, imageBytes);
-
-        // Retorna o caminho relativo ou o nome do arquivo para armazenar no banco
-        return filePath.toString(); // Ou apenas filename se for o caminho relativo
+        System.out.println("Salvando arquivo em: " + filePath.toAbsolutePath());
+        return filePath.toString();
     }
 
     public void delete(Recipe recipe) {
         recipeRepository.delete(recipe);
+    }
+
+    public List<Recipe> findByEmail(String email) {
+        Optional<User> user = userService.findById(email);
+        if (user.isPresent()) {
+            return recipeRepository.findByAuthor(user);
+        }
+        return Collections.emptyList();
     }
 
 }

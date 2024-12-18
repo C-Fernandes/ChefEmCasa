@@ -1,7 +1,7 @@
 package com.back.chef_em_casa_back.filters;
 
-import com.back.chef_em_casa_back.service.UserService;
-import com.back.chef_em_casa_back.utils.JwtUtil;
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,12 +10,13 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.back.chef_em_casa_back.service.UserService;
+import com.back.chef_em_casa_back.utils.JwtUtil;
+
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import java.io.IOException;
 
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
@@ -48,8 +49,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             // Valida o token JWT
             if (jwtUtil.validateToken(jwt, userDetails)) {
                 // Cria o objeto de autenticação
-                UsernamePasswordAuthenticationToken authenticationToken =
-                        new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+                        userDetails, null, userDetails.getAuthorities());
 
                 // Configura detalhes adicionais da autenticação
                 authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));

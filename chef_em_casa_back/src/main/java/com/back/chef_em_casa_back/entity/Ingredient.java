@@ -24,4 +24,8 @@ public class Ingredient {
     @OneToMany(mappedBy = "ingredient")
     private List<IngredientRecipe> IngredientRecipe = new ArrayList<>();
 
+    public Ingredient(String name) {
+        this.name = name;
+    }
+
 }
