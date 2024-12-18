@@ -35,12 +35,12 @@ public class UserService implements UserDetailsService {
         // Aqui buscamos o usuário no banco de dados usando o email (username)
         User user = ((Optional<User>) userRepository.findByEmail(username))
                 .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
-
-        // Criamos um objeto UserDetails com a classe User do Spring Security
+                System.out.println("Carregando usuário com email: " + username);
+                System.out.println("Senha armazenada no banco (hash): " + user.getPassword());
+                // Criamos um objeto UserDetails com a classe User do Spring Security
         return org.springframework.security.core.userdetails.User.builder()
                 .username(user.getEmail()) // Define o email como username
                 .password(user.getPassword()) // Define a senha
-                .roles("USER") // Atribui o papel "USER", já que todos são usuários comuns
                 .build();
     }
 

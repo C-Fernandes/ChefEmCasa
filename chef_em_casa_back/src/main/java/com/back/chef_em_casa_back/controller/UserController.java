@@ -9,17 +9,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.back.chef_em_casa_back.dto.UserDTO;
 import com.back.chef_em_casa_back.entity.User;
 import com.back.chef_em_casa_back.service.UserService;
 
 @RestController
-@RequestMapping("public/user")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -32,21 +29,6 @@ public class UserController {
             return ResponseEntity.ok(users);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Collections.emptyList());
-        }
-    }
-
-    @PostMapping("/register")
-    public ResponseEntity<User> save(@RequestBody UserDTO userDTO) {
-        try {
-            User user = new User();
-            user.setEmail(userDTO.email());
-            user.setPassword(userDTO.password());
-            user.setName(userDTO.name());
-            user.setBirthDate(userDTO.birthDate());
-            User savedUser = userService.save(user);
-            return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null); // ou e.getMessage()
         }
     }
 
