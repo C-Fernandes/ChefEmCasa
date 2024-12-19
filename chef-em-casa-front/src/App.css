@@ -663,7 +663,14 @@ main {
     background-color: var(--amarelo-dourado) !important;
     color: white !important;
 }
-
+.filtered-categories, .selected-categories{
+    flex-direction: row !important;justify-content: flex-start !important;
+    flex-wrap: wrap !important;
+}
+.selected-categories button.selected{
+    background-color: var(--amarelo-dourado) !important;
+    color: white !important;
+}
 .modal-recipe .description {
     width: 100%;
     box-sizing: border-box;

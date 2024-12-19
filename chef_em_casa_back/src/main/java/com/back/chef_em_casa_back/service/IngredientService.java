@@ -16,7 +16,7 @@ public class IngredientService {
     }
 
     Ingredient save(String name) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return ingredientRepository.save(new Ingredient(name));
     }
 
 }

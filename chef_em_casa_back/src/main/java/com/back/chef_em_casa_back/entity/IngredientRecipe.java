@@ -1,5 +1,7 @@
 package com.back.chef_em_casa_back.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,11 +25,11 @@ public class IngredientRecipe {
     private Long id;
     private double quantity;
     private String unit;
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "ingredient_id")
     private Ingredient ingredient;
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "recipe_id")
     private Recipe recipe;

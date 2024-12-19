@@ -14,6 +14,7 @@ function RecipeModal({ onClose }) {
   });
   const apiUrl = "recipe/register";
   const [isVisible, setIsVisible] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
   const [newIngredient, setNewIngredient] = useState({
     quantity: "",
     unit: "",
@@ -44,20 +45,20 @@ function RecipeModal({ onClose }) {
     FRUTA: "fruta", // Unidade genérica de fruta
     CAIXA: "caixa", // Caixa
   };
+
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const {
     data: dataFetch,
     error: errorFetch,
     loading: loadingFetch,
   } = useFetch("labels/");
 
-  const [searchTerm, setSearchTerm] = useState("");
-
   const filteredCategories = dataFetch
     ? dataFetch.filter((category) =>
         category.name.toLowerCase().includes(searchTerm.toLowerCase())
       )
     : [];
-  console.log(dataFetch);
+
   useEffect(() => {
     setIsVisible(true);
   }, []);
@@ -91,7 +92,7 @@ function RecipeModal({ onClose }) {
       description: formValues.description,
       preparationTimeMinutes: formValues.preparationTime,
       performance: formValues.preparationMode,
-      author: "Autor Exemplo", // Ajuste conforme necessário
+      author: localStorage.getItem("userEmail"), // Ajuste conforme necessário
       ingredients: formValues.ingredients,
     };
 
@@ -142,19 +143,16 @@ function RecipeModal({ onClose }) {
     }
   };
 
-  const handleCategorySelect = (category) => {
-    const updatedCategories = formValues.categories.includes(category)
-      ? formValues.categories.filter((c) => c !== category)
-      : [...formValues.categories, category];
-
-    handleChange({
-      target: {
-        name: "categories",
-        value: updatedCategories,
-      },
+  const handleCategorySelect = (categoryName) => {
+    setSelectedCategories((prevSelectedCategories) => {
+      if (prevSelectedCategories.includes(categoryName)) {
+        return prevSelectedCategories.filter((name) => name !== categoryName);
+      } else {
+        return [...prevSelectedCategories, categoryName];
+      }
     });
+    console.log(selectedCategories);
   };
-
   useEffect(() => {
     if (dataSubmit) {
       const timer = setTimeout(() => {
@@ -301,23 +299,44 @@ function RecipeModal({ onClose }) {
             <div className="categories">
               {loadingFetch && <p>Carregando...</p>}
               {errorFetch && <p>Erro ao carregar categorias: {errorFetch}</p>}
-              {/* Verifica se há texto no searchTerm antes de exibir as categorias */}
-              {searchTerm && filteredCategories.length > 0
-                ? filteredCategories.map((category) => (
+              {selectedCategories.length > 0 && (
+                <div className="selected-categories">
+                  {selectedCategories.map((categoryName) => (
                     <button
-                      key={category.name}
+                      key={categoryName}
                       type="button"
-                      className={
-                        formValues.categories.includes(category.name)
-                          ? "selected"
-                          : ""
-                      }
-                      onClick={() => handleCategorySelect(category.name)}
+                      className="selected"
+                      onClick={() => handleCategorySelect(categoryName)}
                     >
-                      {category.name}
+                      {categoryName}
                     </button>
-                  ))
-                : searchTerm && <p>Nenhuma etiqueta encontrada.</p>}
+                  ))}
+                </div>
+              )}
+
+              {/* Exiba as categorias filtradas */}
+              {searchTerm && filteredCategories.length > 0 && (
+                <div className="filtered-categories">
+                  {filteredCategories
+                    .filter(
+                      (category) => !selectedCategories.includes(category.name)
+                    )
+                    .map((category) => (
+                      <button
+                        key={category.name}
+                        type="button"
+                        className=""
+                        onClick={() => handleCategorySelect(category.name)}
+                      >
+                        {category.name}
+                      </button>
+                    ))}
+                </div>
+              )}
+
+              {searchTerm && filteredCategories.length === 0 && (
+                <p>Nenhuma etiqueta encontrada.</p>
+              )}
             </div>
           </div>
           <div className="buttons-recipe-modal">

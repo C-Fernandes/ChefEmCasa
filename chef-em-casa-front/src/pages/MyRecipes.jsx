@@ -9,7 +9,6 @@ function MyRecipes() {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  // Fazendo a requisição de receitas
   const {
     data: dataFetch,
     error: errorFetch,
@@ -30,7 +29,7 @@ function MyRecipes() {
                 description={recipe.description}
                 num_likes={recipe.num_likes}
                 num_comments={recipe.num_comments}
-                src_image={recipe.src_image}
+                src_image={recipe.imageUrlString}
               />
             ))
           ) : (
@@ -41,7 +40,6 @@ function MyRecipes() {
             <button className="add-recipe-circle">+</button>
           </div>
 
-          {/* Modal para adicionar nova receita */}
           {isModalOpen && <RecipeModal onClose={closeModal} />}
         </div>
       </main>

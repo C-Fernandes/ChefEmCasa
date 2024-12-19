@@ -3,6 +3,8 @@ package com.back.chef_em_casa_back.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,7 +40,7 @@ public class Recipe {
 
     @OneToMany(mappedBy = "recipe")
     private List<Avaliation> avaliacoes = new ArrayList<>();
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User author;

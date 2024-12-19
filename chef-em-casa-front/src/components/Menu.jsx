@@ -35,7 +35,9 @@ function Menu() {
       </div>
       <div className="userName" onClick={openLoginModal}>
         <p>{data && data.name ? data.name : "User Name"}</p>
-        <span className="initial">U</span>
+        <span className="initial">
+          {data && data.name ? data.name.charAt(0).toUpperCase() : "U"}
+        </span>
 
         {/* Renderiza o modal de login ou registro dependendo do estado */}
         {activeModal === "login" && (
