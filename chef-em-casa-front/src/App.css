@@ -399,6 +399,8 @@ main {
     font-family: "Manjari", sans-serif;
     border: none;
     height: min-content;
+    display: flex;
+    align-items: center;
 }
 
 .btn {
