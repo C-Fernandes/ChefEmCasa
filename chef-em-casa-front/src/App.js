@@ -9,6 +9,7 @@ import Recipe from "./pages/Recipe";
 import PrivateRoute from "./Routes/PrivateRoute";
 
 function App() {
+  localStorage.clear();
   return (
     <Router>
       <Routes>
