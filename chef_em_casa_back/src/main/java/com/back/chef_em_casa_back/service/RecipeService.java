@@ -21,7 +21,7 @@ import io.jsonwebtoken.io.IOException;
 @Service
 public class RecipeService {
 
-    private final String uploadDir = "uploads";
+    private final String uploadDir = "chef_em_casa_back/src/main/resources";
     @Autowired
     private RecipeRepository recipeRepository;
 
