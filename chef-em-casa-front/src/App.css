@@ -937,3 +937,180 @@ main {
     align-items: flex-start; /* Alinha o input ao lado do círculo */
     gap: 10px; /* Espaçamento entre o círculo e o input */
 }
+
+/* HOME */
+.hero {
+    /* background-image: url("./images/food-1932466_1920.png"); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 436px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0.03)), url("/public/images/food-1932466_1920.png");
+    background-size: cover;
+    background-position: center;
+    padding: 0 132px;
+    margin: 0;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.hero .description {
+    max-width: 424px;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.hero button {
+    width: min-content;
+}
+
+.hero>* {
+    color: white;
+}
+
+#home__receitas-populares>.button {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.card-category {
+    min-width: 222px;
+    min-height: 159px;
+    border-radius: 14px;
+    padding: 10px;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: var(--semibold);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.card-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(87, 56, 67, .5);
+    z-index: -1;
+    transition: all .3s;
+}
+
+.card-category:hover::before {
+    background-color: rgba(87, 56, 67, .7);
+}
+
+.carousel {
+    position: relative;
+}
+
+.carousel__content {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 15px;
+}
+
+.carousel__content::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel>button {
+    padding: 0px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: var(--amarelo-dourado);
+    z-index: 2;
+}
+
+.carousel__left {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+.carousel__right {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%) translateX(50%);
+}
+
+#massas {
+    background-image: url("/public/images/categories-img/torta.jpeg");
+}
+
+#sopas {
+    background-image: url("/public/images/categories-img/caldo.jpg");
+}
+
+#carnes {
+    background-image: url("/public/images/categories-img/carne.jpg");
+}
+
+#sobremesas {
+    background-image: url("/public/images/categories-img/sobremesa.jpg");
+}
+
+#frutos-do-mar {
+    background-image: url("/public/images/categories-img/peixe.jpg");
+}
+
+#vegano {
+    background-image: url("/public/images/categories-img/vegano.jpg");
+}
+
+#etnicas {
+    background-image: url("/public/images/categories-img/etnica.jpg");
+}
+
+#bebidas {
+    background-image: url("/public/images/categories-img/bebida.jpg");
+}
+
+#aves {
+    background-image: url("/public/images/categories-img/ave.jpg");
+}
+
+#vegetariano {
+    background-image: url("/public/images/categories-img/vegetariano.jpg");
+}
+
+#graos {
+    background-image: url("/public/images/categories-img/graos_e_cereais.jpg");
+}
+
+#risoto {
+    background-image: url("/public/images/categories-img/risoto.jpg");
+}
+
+#paes {
+    background-image: url("/public/images/categories-img/paes.jpg");
+}
+
+#molhos {
+    background-image: url("/public/images/categories-img/molhos.jpg");
+}
+
+#lanches {
+    background-image: url("/public/images/categories-img/lanche.jpg");
+}
