@@ -864,4 +864,64 @@ main {
     height: 50px;
     background-color: #573843;
     border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.heart {
+    width: 32px;
+}
+
+.input-comentario {
+    padding: 10px;
+    margin-bottom: 10px; /* Espaçamento entre o input e os botões */
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    background-color: #eae0e4;
+    width: 100%; /* Ajusta para ocupar toda a largura disponível */
+    box-sizing: border-box; /* Inclui o padding na largura */
+}
+
+.comentarios-receita{
+    margin: auto;
+    width: 100%;
+}
+
+.comentario-pessoal {
+    display: flex;
+    align-items: flex-start; /* Alinha o input ao lado do círculo */
+    gap: 10px; /* Espaçamento entre o círculo e o input */
+    margin-bottom: 40px;
+}
+
+.espaco-comentario {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Organiza o input e os botões em coluna */
+}
+
+.espaco-comentario > div {
+    display: flex;
+    justify-content: flex-end; /* Alinha os botões à direita */
+    gap: 10px; /* Espaçamento entre os botões */
+}
+
+.btn-comentar{
+    width: 6rem;
+    background-color: #FFA834;
+    border: none;
+    color: white;
+}
+
+.btn-cancelar{
+    width: 5rem;
+    background-color: #FF5D5D;
+    border: none;
+    color: white;
+}
+
+.comentario-div{
+    display: flex;
+    margin-bottom: 20px;
+    align-items: flex-start; /* Alinha o input ao lado do círculo */
+    gap: 10px; /* Espaçamento entre o círculo e o input */
 }
