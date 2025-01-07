@@ -10,13 +10,11 @@ import PrivateRoute from "./Routes/PrivateRoute";
 
 function App() {
   useEffect(() => {
-    // Verifica se a aplicação já foi inicializada
     if (!localStorage.getItem("initialized")) {
-      localStorage.clear(); // Limpa todos os dados
-      localStorage.setItem("initialized", "true"); // Marca como inicializado
+      localStorage.clear();
+      localStorage.setItem("initialized", "true");
     }
   }, []);
-
   return (
     <Router>
       <Routes>
