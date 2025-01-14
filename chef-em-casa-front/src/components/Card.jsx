@@ -1,7 +1,7 @@
 function Card(props) {
     return (
-        <div className="card">
-            <a href="/recipe">
+        <a href="/recipe">
+            <div className="card">
                 <div className="image" style={{ backgroundImage: `url(${props.src_image})` }}></div>
                 <h3 className="title">{props.title}</h3>
                 <p className="description">{props.description}</p>
@@ -18,8 +18,8 @@ function Card(props) {
                         <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#FFA834"><path d="M248-156v-584q0-27.64 19.68-47.32T315-807h330q27.64 0 47.32 19.68T712-740v584l-232-92-232 92Zm67-99 165-66 165 66v-485H315v485Zm0-485h330-330Z" /></svg>
                     </button>
                 </footer>
-            </a>
-        </div>
+            </div>
+        </a>
 
     );
 }
