@@ -176,8 +176,7 @@ select {
     /* Remove a seta no navegador padrão */
 }
 
-button,
-.btn {
+button {
     border-radius: 50px;
     padding: 5px 15px;
     height: 34px;
