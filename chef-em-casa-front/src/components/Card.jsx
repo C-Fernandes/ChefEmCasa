@@ -6,8 +6,8 @@ function Card(props) {
     };
 
     return (
-        <div className="card">
-            <a href="/recipe">
+        <a href="/recipe">
+            <div className="card">
                 <div
                     className="image"
                     style={{ backgroundImage: `url(${getRandomImage()})` }}
@@ -51,8 +51,9 @@ function Card(props) {
                         </svg>
                     </button>
                 </footer>
-            </a>
-        </div>
+
+            </div >
+        </a>
     );
 }
 
