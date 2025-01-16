@@ -15,6 +15,7 @@ function MyRecipes() {
     loading: loadingFetch,
   } = useFetch("recipe/");
 
+  console.log(dataFetch);
   return (
     <>
       <Menu />
@@ -25,10 +26,10 @@ function MyRecipes() {
             dataFetch.map((recipe) => (
               <Card
                 key={recipe.id}
-                title={recipe.title}
+                title={recipe.name}
                 description={recipe.description}
-                num_likes={recipe.num_likes}
-                num_comments={recipe.num_comments}
+                num_likes={0}
+                num_comments={0}
                 src_image={recipe.imageUrlString}
               />
             ))

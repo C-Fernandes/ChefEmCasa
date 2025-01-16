@@ -65,6 +65,7 @@ function LoginModal({ onClose, openRegisterModal }) {
               className="input"
               type="password"
               id="password"
+              placeholder="Senha"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
