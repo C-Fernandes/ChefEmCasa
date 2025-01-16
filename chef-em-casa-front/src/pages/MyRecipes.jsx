@@ -32,9 +32,7 @@ function MyRecipes() {
                 src_image={recipe.imageUrlString}
               />
             ))
-          ) : (
-            <p></p>
-          )}{" "}
+          ) : ""}{""}
           <Card
             title="Título da receita"
             description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."

@@ -98,7 +98,7 @@ function AsideFilter(props) {
             </div>
 
             <div className="options buttons">
-                <button onClick={() => clearAll()} id="clear-filter-button" className="simple-button">Limpar</button>
+                <button onClick={() => clearAll()} className="simple-button cancel-button">Limpar</button>
                 <button id="filter-button" className="simple-button">Filtrar</button>
             </div>
         </aside>

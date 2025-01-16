@@ -22,7 +22,7 @@ function App() {
         <Route path='/explorar' element={<Explore />} />
         <Route path="/criar" element={<PrivateRoute><MyRecipes /></PrivateRoute>} />
 
-        <Route path="/recipe" element={<Recipe />} />
+        <Route path="/recipe" element={<Recipe numLikes={37} />} />
       </Routes>
     </Router>
 

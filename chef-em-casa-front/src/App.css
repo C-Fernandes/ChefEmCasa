@@ -441,8 +441,7 @@ main {
 .buttons {
     justify-content: flex-end;
 }
-
-#clear-filter-button {
+.cancel-button {
     background-color: var(--vermelho-coral);
 }
 
@@ -542,6 +541,8 @@ main {
     /* Animação de entrada para o conteúdo */
 
 }
+
+
 
 .modal-recipe {
     overflow-y: auto;
@@ -691,15 +692,23 @@ main {
 
 .ingredients .ingredients-labels {
     display: flex;
-
     flex-direction: row;
-    align-content: center;
-    align-items: center;
+    /* flex-direction: row; */
+    /* align-content: center; */
+    /* align-items: center; */
 
 }
 
 .ingredients .ingredients-labels button {
-    margin: 0 0 0 5px !important;
+    /* margin: 0 0 0 5px !important; */
+    background-color: #FFA834;
+    padding: 3px;
+    border: none;
+    display: flex;
+    border-radius: 50px;
+    height: 30px;
+    width: 30px;
+    margin-top: 0;
 }
 
 .modal-recipe .ingredients input,
@@ -707,13 +716,6 @@ main {
     width: auto !important;
     margin: 0 5px 0 0;
 
-}
-
-.modal-recipe .ingredients button {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    padding: 5px;
 }
 
 .upload-container {
@@ -846,7 +848,25 @@ main {
     border-radius: 20px;
 }
 
-.star {
+.like-button {
+    color: var(--vermelho-coral);
+}
+
+
+#recipe .informacoes .flex-row > * {
+    display: flex;
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 0;
+    margin: 0;
+}
+
+
+#recipe .recipe-like
+
+.info-recipe {
     margin-left: 6px;
     width: 16px;
 }
@@ -876,10 +896,6 @@ main {
     background-color: #573843;
     border-radius: 50%;
     flex-shrink: 0;
-}
-
-.heart {
-    width: 32px;
 }
 
 .input-comentario {
