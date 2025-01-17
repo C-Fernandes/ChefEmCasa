@@ -20,4 +20,8 @@ public class LabelsService {
         return labels;
     }
 
+    public void save(List<Labels> labels, long idRecipe) {
+
+    }
+
 }

@@ -21,6 +21,7 @@ function RecipeModal({ onClose }) {
         name: "",
     });
     const [image, setImage] = useState(null);
+    const [urlImage, setUrlImage] = useState(null);
     const Measure = {
         GRAM: "g", // Gramas
         KILOGRAM: "kg", // Quilogramas
@@ -72,7 +73,9 @@ function RecipeModal({ onClose }) {
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
+            const imageUrl = URL.createObjectURL(file);
             setImage(file);
+            setUrlImage(imageUrl);
         }
     };
     const handleSubmit = async (e) => {
@@ -182,8 +185,16 @@ function RecipeModal({ onClose }) {
                             onChange={handleImageChange}
                         />
                         <label htmlFor="fileInput" className="upload-label">
-                            <i className="fi fi-rr-download"></i>
-                            <p>Insira uma imagem do prato pronto!</p>
+                            {!image && (
+                                <p>Insira uma imagem do prato pronto!</p>
+                            )}
+                            {image && (
+
+                                <img src={urlImage} alt="Pré-visualização" />
+
+                            )}
+                            {image && <p className="hover-text">Clique para mudar a imagem</p>}
+
                         </label>
                     </div>
                     <div>
@@ -251,7 +262,7 @@ function RecipeModal({ onClose }) {
                                 }
                             />
                             <button type="button" onClick={handleAddIngredient}>
-                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M454.04-454.54H228.08v-51.92h225.96v-225.96h51.92v225.96h225.96v51.92H505.96v225.96h-51.92v-225.96Z" /></svg>
+                                +
                             </button>
                         </div>
                         <ul className="selected-ingredients">
